@@ -6,11 +6,11 @@ declare i32 @printf(i8*, ...) nounwind
 define i32 @main() nounwind {
 %a = alloca i32
 store i32 0, i32* %a
-%1 = add i32 3, 5
-%2 = sub i32 0, 2
-%3 = sub i32 %1, %2
-store i32 %3, i32* %a
-%4 = load i32, i32* %a
-%5 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds([4 x i8], [4 x i8]* @str_print_int, i32 0, i32 0), i32 %4)
+%b = alloca i32
+store i32 0, i32* %b
+%1 = add i32 5, 2
+store i32 %1, i32* %a
+%2 = load i32, i32* %a
+%3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds([4 x i8], [4 x i8]* @str_print_int, i32 0, i32 0), i32 %2)
 ret i32 0
 }

@@ -74,17 +74,17 @@ public class Lexer {
 			return new Token(Tag.ASSIGN, "=");
 		case '+':
 			nextChar();
-			if ( peek == '+' ) {
-				nextChar();
-				return new Token(Tag.INCREMENT, "++");
-			}
+			// if ( peek == '+' ) {
+			// 	nextChar();
+			// 	return new Token(Tag.INCREMENT, "++");
+			// }
 			return new Token(Tag.SUM, "+");
 		case '-':
 			nextChar();
-			if ( peek == '-' ) {
-				nextChar();
-				return new Token(Tag.DECREMENT, "++");
-			}
+			// if ( peek == '-' ) {
+			// 	nextChar();
+			// 	return new Token(Tag.DECREMENT, "--");
+			// }
 			return new Token(Tag.SUB, "-");
 		case '*':
 			nextChar();

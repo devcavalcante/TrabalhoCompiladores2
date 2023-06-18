@@ -1,5 +1,6 @@
 programa teste inicio
-  inteiro a;
-  a = 3 + 5 - (-2);
+  inteiro a; inteiro b;
+  a = 5+2;
   escreva(a);
 fim.
+

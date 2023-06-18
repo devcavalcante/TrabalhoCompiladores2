@@ -15,12 +15,9 @@ IF					::= se (EXPR) STMT
 EXPR				::= EXPR "|" REL | REL  
 REL					::= REL < ARITH | REL <= ARITH | REL > ARITH | ARITH  
 ARITH  				::= ARITH + TERM | ARITH - TERM | TERM  
-TERM				::= TERM * FACTOR | FACTOR  
-FACTOR				::= (EXPR) | UNARY | ID | LIT_INT | LIT_REAL | LIT_BOOL  
-UNARY               ::= + FACTOR | - FACTOR | PREFIX | POSTFIX
-PREFIX             ::= ++UNARY | --UNARY
-POSTFIX            ::= UNARY++ | UNARY--
-
+TERM				::= TERM * UNARY | UNARY
+UNARY               ::= +UNARY | -UNARY | FACTOR
+FACTOR				::= (EXPR) | ID | LIT_INT | LIT_REAL | LIT_BOOL  
 
 
 ## Definições Regulares

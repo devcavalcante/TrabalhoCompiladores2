@@ -8,6 +8,7 @@ import inter.expr.Expr;
 import inter.expr.Id;
 import inter.expr.Literal;
 import inter.expr.Or;
+import inter.expr.PreUnary;
 import inter.expr.Rel;
 import inter.expr.Unary;
 import inter.stmt.Assign;
@@ -100,13 +101,13 @@ public class Parser {
 
 	private Stmt stmt() {
 		switch ( look.tag() ) {
-		case BEGIN: return block();
-		case INT: case REAL: 
+			case BEGIN: return block();
+			case INT: case REAL: 
 			case BOOL: return decl();
-		case WRITE: return writeStmt();
-		case ID: return assign();
-		case IF: return ifStmt();
-		default: error("comando inválido");
+			case WRITE: return writeStmt();
+			case ID: return assign();
+			case IF: return ifStmt();
+			default: error("comando inválido");
 		}
 		return null;
 	}
@@ -180,12 +181,20 @@ public class Parser {
 	}
 
 	private Expr term() {
-		Expr e = factor();
+		Expr e = unary();
 		while(	look.tag() == Tag.MUL ) {
 			Token op = move();
-			e = new Bin(op, e, factor());
-		}
+			e = new Bin(op, e, unary());
+		}	
 		return e;
+	}
+
+	private Expr unary() {
+		if (look.tag() == Tag.SUM || look.tag() == Tag.SUB) {
+			Token op = move();
+			return new Unary(op, factor());
+		}
+		return factor();
 	}
 
 	private Expr factor() {
@@ -204,10 +213,6 @@ public class Parser {
 			break;
 		case TRUE: case FALSE:
 			e = new Literal(move(), Tag.BOOL);
-			break;
-		case SUM: case SUB:
-			e = new Unary(move(), factor());
-			System.out.println("aeeeee");
 			break;
 		case ID:
 			e = findId( match(Tag.ID) );
