@@ -6,8 +6,7 @@ import lexer.Token;
 public class Temp extends Expr {
 	private static int count = 1;
 	private int number;
-	private static Token TOKEN_TEMP = 
-			new Token(Tag.TEMP, "");
+	private static Token TOKEN_TEMP = new Token(Tag.TEMP, "");
 	
 	public Temp(Tag type) {
 		super(TOKEN_TEMP, type);

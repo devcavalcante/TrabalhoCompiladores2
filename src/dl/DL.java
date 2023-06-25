@@ -21,8 +21,7 @@ public class DL {
 
 		//Construindo arquivo
 		try {
-			PrintWriter pw = 
-				new PrintWriter("prog.ll");
+			PrintWriter pw = new PrintWriter("prog.ll");
 			pw.write(p.code());
 			pw.close();
 		} catch (Exception e) {

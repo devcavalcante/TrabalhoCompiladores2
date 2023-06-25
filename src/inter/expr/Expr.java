@@ -43,4 +43,9 @@ public abstract class Expr extends Node {
 		error("Tipos incompatíveis");
 		return null;
 	}
+
+	public Expr reduce()
+	{
+		return this;
+	}
 }

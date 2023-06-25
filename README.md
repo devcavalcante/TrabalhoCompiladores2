@@ -16,8 +16,10 @@ EXPR				::= EXPR "|" REL | REL
 REL					::= REL < ARITH | REL <= ARITH | REL > ARITH | ARITH  
 ARITH  				::= ARITH + TERM | ARITH - TERM | TERM  
 TERM				::= TERM * UNARY | UNARY
-UNARY               ::= +UNARY | -UNARY | FACTOR
-FACTOR				::= (EXPR) | ID | LIT_INT | LIT_REAL | LIT_BOOL  
+UNARY               ::= +UNARY | -UNARY | PREFIX | FACTOR
+PREFIX              ::= ++ID | --ID
+FACTOR				::= (EXPR) | ID | LIT_INT | LIT_REAL | LIT_BOOL | POSFIX
+POSFIX              ::= ID++ | ID--
 
 
 ## Definições Regulares

@@ -9,6 +9,11 @@ public enum Tag {
 	ASSIGN("ASSIGN"),
 	//Arithmetical Operators
 	SUM("SUM"), SUB("SUB"), MUL("MUL"), 
+	//Unary operators
+	MINUS("MINUS"), PLUS("PLUS"), 
+	INCREMENT("INC"), DECREMENT("DEC"),
+	POSINCREMENT("POSINC"), POSDECREMENT("POSDEC"),
+	PREINC("POSDEC"), PREDEC("PREDEC"),
 	//Logical Operators
 	OR("OR"),
 	//Relational Operators
@@ -18,7 +23,6 @@ public enum Tag {
 	//Literals and Identifiers
 	LIT_INT("LIT_INT"), LIT_REAL("LIT_REAL"), ID("ID"),
 	TRUE("TRUE"), FALSE("FALSE"),
-	INCREMENT("INC"), DECREMENT("DEC"),
 	//Others
 	EOF("EOF"), UNK("UNK"), TEMP("TEMP");
 	

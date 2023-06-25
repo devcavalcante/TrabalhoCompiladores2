@@ -8,7 +8,8 @@ import inter.expr.Expr;
 import inter.expr.Id;
 import inter.expr.Literal;
 import inter.expr.Or;
-import inter.expr.PreUnary;
+import inter.expr.Posfix;
+import inter.expr.Prefix;
 import inter.expr.Rel;
 import inter.expr.Unary;
 import inter.stmt.Assign;
@@ -190,10 +191,29 @@ public class Parser {
 	}
 
 	private Expr unary() {
-		if (look.tag() == Tag.SUM || look.tag() == Tag.SUB) {
-			Token op = move();
-			return new Unary(op, factor());
+		if (look.tag() == Tag.SUB) {
+			move();
+			Token op = new Token(Tag.MINUS, "-");
+			return new Unary(op, unary());
 		}
+		if(look.tag() == Tag.SUM){
+			move();
+			Token op = new Token(Tag.PLUS, "+");
+			return new Unary(op, unary());
+		}
+		if (look.tag() == Tag.INCREMENT) {
+			match(Tag.INCREMENT);
+			Token idToken = match(Tag.ID);
+			Id id = findId(idToken);
+			return new Prefix(new Token(Tag.PREINC, "++"), id);
+		}
+		if (look.tag() == Tag.DECREMENT) {
+			match(Tag.DECREMENT);
+			Token idToken = match(Tag.ID);
+			Id id = findId(idToken);
+			return new Prefix(new Token(Tag.PREDEC, "--"), id);
+		}
+
 		return factor();
 	}
 
@@ -215,7 +235,17 @@ public class Parser {
 			e = new Literal(move(), Tag.BOOL);
 			break;
 		case ID:
-			e = findId( match(Tag.ID) );
+			Token idToken = match(Tag.ID);
+			Id id = findId(idToken);
+			if (look.tag() == Tag.INCREMENT) {
+				match(Tag.INCREMENT);
+				return new Posfix(new Token(Tag.POSINCREMENT, "++"), id);
+			} else if (look.tag() == Tag.DECREMENT) {
+				match(Tag.DECREMENT);
+				return new Posfix(new Token(Tag.POSDECREMENT, "--"), id);
+			} else {
+				e = id;
+			}
 			break;
 		default:
 			error("expressão inválida");

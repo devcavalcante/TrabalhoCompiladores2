@@ -12,15 +12,15 @@ public class Unary extends Expr {
         type = expr.type(); // O tipo resultante é o mesmo tipo da expressão interna
 		expr1 = expr;
     }
-
+    
     @Override
     public Expr gen() {
         Temp t = new Temp(type);
         Expr e = expr1.gen();
         
-        if (op.tag() == Tag.SUB) {
+        if (op.tag() == Tag.MINUS) {
             code.emitOperation(t, Emitter.LIT_ZERO_INT, e, Tag.SUB); // Geração do código LLVM para operador unário -
-        } else if (op.tag() == Tag.SUM) {
+        } else if (op.tag() == Tag.PLUS) {
             code.emitStore(t, e); // Geração do código LLVM para operador unário +
         }
         

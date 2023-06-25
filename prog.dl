@@ -1,6 +1,7 @@
 programa teste inicio
   inteiro a; inteiro b;
-  a = 5+2;
-  escreva(a);
+  a = a;
+  b = a++;
+  escreva(b);
 fim.
 
