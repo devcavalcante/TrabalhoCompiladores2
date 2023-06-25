@@ -4,10 +4,10 @@ import inter.Emitter;
 import lexer.Tag;
 import lexer.Token;
 
-public class Posfix extends Expr {
+public class Postfix extends Expr {
     private Expr expr;
     
-    public Posfix(Token op, Expr expr) {
+    public Postfix(Token op, Expr expr) {
         super(op, null); // O tipo do resultado será definido durante a análise semântica
         this.expr = expr;
         type = expr.type(); // O tipo resultante é o mesmo tipo da expressão interna

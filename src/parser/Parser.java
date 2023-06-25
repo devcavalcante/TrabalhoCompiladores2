@@ -8,7 +8,7 @@ import inter.expr.Expr;
 import inter.expr.Id;
 import inter.expr.Literal;
 import inter.expr.Or;
-import inter.expr.Posfix;
+import inter.expr.Postfix;
 import inter.expr.Prefix;
 import inter.expr.Rel;
 import inter.expr.Unary;
@@ -239,10 +239,10 @@ public class Parser {
 			Id id = findId(idToken);
 			if (look.tag() == Tag.INCREMENT) {
 				match(Tag.INCREMENT);
-				return new Posfix(new Token(Tag.POSINCREMENT, "++"), id);
+				return new Postfix(new Token(Tag.POSINCREMENT, "++"), id);
 			} else if (look.tag() == Tag.DECREMENT) {
 				match(Tag.DECREMENT);
-				return new Posfix(new Token(Tag.POSDECREMENT, "--"), id);
+				return new Postfix(new Token(Tag.POSDECREMENT, "--"), id);
 			} else {
 				e = id;
 			}

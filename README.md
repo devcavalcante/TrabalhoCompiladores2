@@ -18,8 +18,8 @@ ARITH  				::= ARITH + TERM | ARITH - TERM | TERM
 TERM				::= TERM * UNARY | UNARY
 UNARY               ::= +UNARY | -UNARY | PREFIX | FACTOR
 PREFIX              ::= ++ID | --ID
-FACTOR				::= (EXPR) | ID | LIT_INT | LIT_REAL | LIT_BOOL | POSFIX
-POSFIX              ::= ID++ | ID--
+FACTOR				::= (EXPR) | ID | LIT_INT | LIT_REAL | LIT_BOOL | POSTFIX
+POSTFIX             ::= ID++ | ID--
 
 
 ## Definições Regulares
@@ -30,3 +30,16 @@ LIT_INT		::= DIGIT+
 LIT_REAL	::= DIGIT+ . DIGIT+   
 LIT_BOOL	::= verdadeiro | falso  
 TYPE     	::= inteiro | real | booleano  
+
+## Recursos adicionados
+Equipe 4
+a. Operadores unários de soma e subtração: adicione as operações
+unárias de soma e subtração, gerando o código intermediário apropriado.
+b. Inc/Dec pré-fixado: Adicione as operações de incremento (++) e
+decremento (--) pré-fixados. Esses operadores só são aplicáveis a variáveis
+numéricas. Consulte a documentação e a BNF do C/C++ e construa o
+mesmo funcionamento e precedência na DL.
+c. Inc/Dec pós-fixado: Adicione as operações de incremento (++) e
+decremento (--) pós-fixados. Esses operadores só são aplicáveis a variáveis
+numéricas. Consulte a documentação e a BNF do C/C++ e construa o
+mesmo funcionamento e precedência na DL.

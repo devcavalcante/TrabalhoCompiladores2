@@ -1,7 +1,7 @@
 programa teste inicio
   inteiro a; inteiro b;
-  a = a;
-  b = a++;
-  escreva(b);
+  b = 4;
+  a = 5-(-2)+(b++);
+  escreva(a);
 fim.
 
