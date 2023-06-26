@@ -18,8 +18,8 @@ ARITH  				::= ARITH + TERM | ARITH - TERM | TERM
 TERM				::= TERM * UNARY | UNARY
 UNARY               ::= +UNARY | -UNARY | PREFIX | FACTOR
 PREFIX              ::= ++ID | --ID
-FACTOR				::= (EXPR) | ID | LIT_INT | LIT_REAL | LIT_BOOL | POSTFIX
-POSTFIX             ::= ID++ | ID--
+FACTOR				::= (EXPR) | LIT_INT | LIT_REAL | LIT_BOOL | IDPOSTFIX
+POSTFIX             ::= ++ | -- | ε
 
 
 ## Definições Regulares

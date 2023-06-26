@@ -33,6 +33,6 @@ public class Prefix extends Expr {
     
     @Override
     public String toString() {
-        return op.toString() + expr.toString();
+        return op.tag().toString();
     }
 }

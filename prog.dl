@@ -1,7 +1,8 @@
 programa teste inicio
-  inteiro a; inteiro b;
-  b = 4;
-  a = 5-(-2)+(b++);
+  inteiro a; inteiro b; booleano c;
+  a = 2;
+  b = 5;
+  a = a++ + b;
   escreva(a);
 fim.
 

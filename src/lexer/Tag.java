@@ -9,11 +9,6 @@ public enum Tag {
 	ASSIGN("ASSIGN"),
 	//Arithmetical Operators
 	SUM("SUM"), SUB("SUB"), MUL("MUL"), 
-	//Unary operators
-	MINUS("MINUS"), PLUS("PLUS"), 
-	INCREMENT("INC"), DECREMENT("DEC"),
-	POSINCREMENT("POSINC"), POSDECREMENT("POSDEC"),
-	PREINC("POSDEC"), PREDEC("PREDEC"),
 	//Logical Operators
 	OR("OR"),
 	//Relational Operators
@@ -24,8 +19,11 @@ public enum Tag {
 	LIT_INT("LIT_INT"), LIT_REAL("LIT_REAL"), ID("ID"),
 	TRUE("TRUE"), FALSE("FALSE"),
 	//Others
-	EOF("EOF"), UNK("UNK"), TEMP("TEMP");
-	
+	EOF("EOF"), UNK("UNK"), TEMP("TEMP"),
+	INCREMENT("INC"), DECREMENT("DEC"),
+	POSINCREMENT("POSINC"), POSDECREMENT("POSDEC"),
+	PREINC("POSDEC"), PREDEC("PREDEC");
+
 	private String name;
 	
 	private Tag(String name) {

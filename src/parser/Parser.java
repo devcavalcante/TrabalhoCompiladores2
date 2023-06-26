@@ -192,13 +192,11 @@ public class Parser {
 
 	private Expr unary() {
 		if (look.tag() == Tag.SUB) {
-			move();
-			Token op = new Token(Tag.MINUS, "-");
+			Token op = move();
 			return new Unary(op, unary());
 		}
 		if(look.tag() == Tag.SUM){
-			move();
-			Token op = new Token(Tag.PLUS, "+");
+			Token op = move();
 			return new Unary(op, unary());
 		}
 		if (look.tag() == Tag.INCREMENT) {

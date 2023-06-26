@@ -11,16 +11,17 @@ public class Unary extends Expr {
         super(op, null); // O tipo do resultado será definido durante a análise semântica
         type = expr.type(); // O tipo resultante é o mesmo tipo da expressão interna
 		expr1 = expr;
+        addChild(expr1);
     }
-    
+
     @Override
     public Expr gen() {
         Temp t = new Temp(type);
         Expr e = expr1.gen();
         
-        if (op.tag() == Tag.MINUS) {
+        if (op.tag() == Tag.SUB) {
             code.emitOperation(t, Emitter.LIT_ZERO_INT, e, Tag.SUB); // Geração do código LLVM para operador unário -
-        } else if (op.tag() == Tag.PLUS) {
+        } else if (op.tag() == Tag.SUM) {
             code.emitStore(t, e); // Geração do código LLVM para operador unário +
         }
         
@@ -29,6 +30,6 @@ public class Unary extends Expr {
 
     @Override
     public String toString() {
-        return op.tag().toString() + " " + expr1.toString();
+        return op.tag().toString();
     }
 }
