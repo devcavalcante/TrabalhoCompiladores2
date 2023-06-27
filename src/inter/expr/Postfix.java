@@ -16,17 +16,16 @@ public class Postfix extends Expr {
 
     public Expr gen() {
         Expr e = expr.gen();
+        Temp temp = new Temp(type);
+        code.emitLoad(temp, e);
         if (op.tag() == Tag.POSINCREMENT) {
             // Pós-incremento
-            Temp temp = new Temp(type);
             code.emitOperation(temp, e, Emitter.LIT_ONE_INT, Tag.SUM); 
-            code.emitStore(expr, temp); 
         } else if (op.tag() == Tag.POSDECREMENT) {
             // Pós-decremento
-            Temp temp = new Temp(type);
             code.emitOperation(temp, e, Emitter.LIT_ONE_INT, Tag.SUB); 
-            code.emitStore(expr, temp); 
         }
+        code.emitStore(expr, temp);
         return e;   
     }
     

@@ -16,17 +16,15 @@ public class Prefix extends Expr {
 
     public Expr gen() {
         Expr e = expr.gen();
+        Temp temp = new Temp(type);
         if (op.tag() == Tag.PREINC) {
             // Pré-incremento
-            Temp temp = new Temp(type);
-            code.emitOperation(temp, e, Emitter.LIT_ONE_INT, Tag.SUM); // Geração do código LLVM para o pré-incremento
-            code.emitStore(temp, expr); // Atualiza o valor da variável com o resultado do pré-incremento
+            code.emitOperation(temp, e, Emitter.LIT_ONE_INT, Tag.SUM);
         } else if (op.tag() == Tag.PREDEC) {
             // Pré-decremento
-            Temp temp = new Temp(type); // Gera um nome temporário para armazenar o resultado do pré-decremento
-            code.emitOperation(temp, e, Emitter.LIT_ONE_INT, Tag.SUB); // Geração do código LLVM para o pré-decremento
-            code.emitStore(temp, expr); // Atualiza o valor da variável com o resultado do pré-decremento
+            code.emitOperation(temp, e, Emitter.LIT_ONE_INT, Tag.SUB);
         }
+        code.emitStore(expr, temp);
         return e;      
     }
     

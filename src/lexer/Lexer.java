@@ -4,10 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.Socket;
 import java.util.Hashtable;
-
-import javax.sound.midi.Soundbank;
 
 public class Lexer {
 	private static final char EOF_CHAR = (char)-1;

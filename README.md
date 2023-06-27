@@ -3,7 +3,7 @@ Este projeto é uma versão resumida da linguagem DL.
 Esta versao faz as análises léxica, sintática e semântica e a geração de código intermediário.  
 Ela está de acordo com a gramática abaixo.  
 
-## Gramática
+## Gramática ajustada
 PROGRAM				::= programa ID BLOCK  
 BLOCK				::= inicio STMTS fim  
 STMTS				::= STMT; STMTS | ε  
@@ -32,7 +32,7 @@ LIT_BOOL	::= verdadeiro | falso
 TYPE     	::= inteiro | real | booleano  
 
 ## Recursos adicionados
-Equipe 4
+Equipe 4: Alexandre; Debora; Lucas; Selena.
 a. Operadores unários de soma e subtração: adicione as operações
 unárias de soma e subtração, gerando o código intermediário apropriado.
 b. Inc/Dec pré-fixado: Adicione as operações de incremento (++) e
